@@ -61,12 +61,19 @@ docker run -d --name php-nginx-web2 --privileged --restart=always -v E:\Docker\n
 FROM webdevops/php-nginx:8.3-alpine
 
 RUN apk update
+
 RUN apk add --no-cache autoconf g++ make
+
 RUN apk add --no-cache unixodbc-dev
+
 RUN pecl install sqlsrv
+
 RUN pecl install sqlsrv
+
 RUN echo "extension=sqlsrv.so" > /usr/local/etc/php/conf.d/php_sqlsrv.ini
+
 RUN echo "extension=pdo_sqlsrv.so" > /usr/local/etc/php/conf.d/php_pdo_sqlsrv.ini
+
 RUN apk del autoconf g++ make
 
 WORKDIR /app
